@@ -1,0 +1,83 @@
+/*home page buttons add/delete*/
+.button-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+/*navbar*/
+.navbar-custom {
+    background-color: darkgreen;
+    min-height: 70px;
+}
+
+.navbar-custom .navbar-brand {
+    color: black;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*add page*/
+.foto-invoegen-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.foto-invoegen {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto-invoegen span {
+    cursor: pointer;
+}
+
+.form-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.btn {
+    margin-top: 1rem;
+}
+
+@media (max-width: 767px) {
+    .foto-invoegen-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .foto-invoegen {
+        font-size: 60px;
+    }
+
+    .form-container {
+        width: 90%;
+    }
+}
+.Fdiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*detail page*/
+.plant-image {
+    max-width: 100%;
+    max-height: 100%;
+}

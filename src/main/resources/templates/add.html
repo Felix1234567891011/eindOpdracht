@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{mystyle.css}" href="mystyle.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Home</a>
+    </div>
+</nav>
+<div class="container-fluid Fdiv">
+    <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-center">
+            <div class="foto-invoegen-container">
+                <div class="foto-invoegen">
+                    <label for="input-image" style="cursor: pointer;">
+                            <h1>+</h1>
+                        <h5>Foto invoegen</h5>
+                    </label>
+                    <input type="file" id="input-image" style="display:none;">
+                </div>
+            </div>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-center">
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="plantnaam">Plantnaam ingeven:</label>
+                    <input type="text" class="form-control" id="plantnaam">
+                </div>
+                <div class="form-group">
+                    <label for="soort">Soort ingeven:</label>
+                    <input type="text" class="form-control" id="soort">
+                </div>
+                <div class="form-group">
+                    <label for="deadlines">Deadlines ingeven:</label>
+                    <input type="text" class="form-control" id="deadlines">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-2">
+            <a href="/" type="button" class="btn btn-lg btn-success float-right">Gereed</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
