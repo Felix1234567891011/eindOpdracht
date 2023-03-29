@@ -10,10 +10,20 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/artikel">Artikel</a>
     </div>
 </nav>
-
+<form>
+    <div>
+        <input class="btn btn-success" type="submit" value="search">
+    </div>
+    <h3>search</h3>
+    <div>
+        <label for="title">search</label>
+        <input type="text" id="title" name="title" value="">
+    </div>
+</form>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -25,33 +35,30 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <a href="/details">
-                <img src="https://via.placeholder.com/300" class="img-responsive" alt="Plant 1">
-            </a>
-            <h2>Plant 1</h2>
-            <p>Beschrijving van Plant 1</p>
-        </div>
-        <div class="col-md-4">
-            <a href="/details">
-                <img src="https://via.placeholder.com/300" class="img-responsive" alt="Plant 2">
-            </a>
-            <h2>Plant 2</h2>
-            <p>Beschrijving van Plant 2</p>
-        </div>
-        <div class="col-md-4">
-            <a href="/details">
-                <img src="https://via.placeholder.com/300" class="img-responsive" alt="Plant 3">
-            </a>
-            <h2>Plant 3</h2>
-            <p>Beschrijving van Plant 3</p>
+        <div th:each="plant : ${plants}" class="col-md-4">
+            <div class="plant-card">
+                <form th:if="${delete}" th:action="@{/delete}" method="post">
+                    <input type="hidden" name="id" th:value="${plant.id}" />
+                    <button type="submit" th:text="x" class="delete-button btn-danger"><i class="fa fa-times"></i></button>
+                </form>
+                <a th:href="@{|/plantdetails/${plant.id}|}">
+                    <img th:if="${plant.image != null}" th:src="@{${'/images/' + plant.image}}" src="../static/images/default-plant-image.jpg" class="img-responsive" th:alt="${plant.name}">
+                    <img th:unless="${plant.image != null}" th:src="@{/images/default-plant-image.jpg}" class="img-responsive" th:alt="${plant.name}">
+                </a>
+                <h2 th:text="${plant.name}"></h2>
+                <p th:text="${plant.description}"></p>
+            </div>
         </div>
     </div>
-    <div class="button-container">
-        <a href="/add" class="btn btn-success btn-lg">Add</a>
-        <a class="btn btn-danger btn-lg" style="margin-left: 10px;">Delete</a>
-    </div>
-</div>
 
+    <div th:unless="${delete}" class="button-container">
+        <a href="/add" class="btn btn-success btn-lg">Add</a>
+        <a href="/delete" class="btn btn-danger btn-lg" style="margin-left: 10px;">Delete</a>
+    </div>
+    <div th:if="${delete}" class="button-container">
+        <a href="/" class="btn btn-success btn-lg">Klaar</a>
+    </div>
+
+</div>
 </body>
 </html>

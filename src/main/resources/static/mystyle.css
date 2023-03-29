@@ -4,6 +4,13 @@
     bottom: 30px;
     right: 30px;
 }
+/*plant images*/
+img {
+    max-width: 300px;
+    max-height: 300px;
+    object-fit: cover
+}
+
 /*navbar*/
 .navbar-custom {
     background-color: darkgreen;
