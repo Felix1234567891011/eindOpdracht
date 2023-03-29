@@ -15,6 +15,7 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/artikel/1">Artikel</a>
     </div>
 </nav>
 <form method="POST" action="/add" enctype="multipart/form-data">
@@ -38,12 +39,12 @@
                         <input type="text" class="form-control" id="plantnaam" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="soort">Soort ingeven:</label>
+                        <label for="soort">Latijnse naam ingeven:</label>
                         <input type="text" class="form-control" id="soort" name="description">
                     </div>
                     <div class="form-group">
                         <label for="deadlines">Deadlines ingeven: (interval van het aantal dagen tussen dat je het water moet geven als nummer. bv. Als je om de 7 dagen water moet geven, geef dan 7 in.)</label>
-                        <input type="number" class="form-control" id="deadlines" name="deadlines" min="0">
+                        <input type="number" class="form-control" id="deadlines" name="deadlines" min="1">
                     </div>
                 </div>
             </div>

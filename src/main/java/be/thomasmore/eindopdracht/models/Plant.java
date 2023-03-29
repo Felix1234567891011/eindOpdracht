@@ -8,22 +8,23 @@ import java.util.Collection;
 public class Plant {
     private static int counter = 3;
     @Id
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private int deadlines;
     private String image;
-
+    @ManyToMany(mappedBy = "plants")
+    private Collection<Artikel> artikels;
     public Plant() {
         this.id = counter;
         counter++;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,6 +58,16 @@ public class Plant {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+
+
+    public Collection<Artikel> getArtikels() {
+        return artikels;
+    }
+
+    public void setArtikels(Collection<Artikel> artikels) {
+        this.artikels = artikels;
     }
 }
 

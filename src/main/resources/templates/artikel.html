@@ -4,18 +4,14 @@
     <title>Artikels</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/mystyle.css(id=${id})}" href="/mystyle.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Home</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="/artikel">Artikel</a></li>
-        </ul>
+        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/artikel/1">Artikel</a>
     </div>
 </nav>
 <div class="container">
@@ -33,5 +29,17 @@
         </div>
     </div>
 </div>
+<div class="d-flex justify-content-center">
+    <h1>Plants referenced in this article:</h1>
+    <div class="btn-group-vertical">
+        <div th:each="plant: ${artikels.plants}">
+            <a th:href="@{|/plantdetails/${plant.id}|}" class="btn btn-success btn-lg mb-3">
+                <span th:text="${plant.name}">plant name </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>

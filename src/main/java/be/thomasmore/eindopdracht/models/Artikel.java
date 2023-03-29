@@ -1,26 +1,28 @@
 package be.thomasmore.eindopdracht.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Artikel {
     @Id
-    private int id;
+    private Integer id;
     private String titel;
     private String onderwerp;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<Plant> plants;
 
     public Artikel() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,5 +40,13 @@ public class Artikel {
 
     public void setOnderwerp(String onderwerp) {
         this.onderwerp = onderwerp;
+    }
+
+    public Collection<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(Collection<Plant> plants) {
+        this.plants = plants;
     }
 }

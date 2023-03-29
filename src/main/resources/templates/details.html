@@ -10,14 +10,12 @@
 <nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/artikel/1">Artikel</a>
     </div>
 </nav>
 <div class="container mt-5 Fdiv">
     <div class="row">
         <div class="col-md-6">
-            <!--<div th:if="${plant.getImage() != null}">
-                <img class="plant-image" th:attr="src=@{/get-plant-image(id=${id})}" alt="Plant Image">
-            </div>-->
             <div>
                 <img th:if="${plant.image != null}" th:src="@{${'/images/' + plant.image}}"
                      src="../static/images/default-plant-image.jpg" class="img-responsive" th:alt="${plant.name}">
@@ -27,11 +25,18 @@
         </div>
         <div class="col-md-6">
             <h1 id="countdown" class="text-danger font-weight-bold"></h1>
+            <div class="mt-2 mb-2">
+                <button class="btn btn-success" onclick="resetCountdown()">I gave the plant water!</button>
+            </div>
             <script>
                 var plantId = [[${plant.id}]];
                 var deadlineDays = [[${plant.deadlines}]];
                 var deadlineTimestamp = localStorage.getItem("plant_" + plantId + "_deadlineTimestamp");
                 if (!deadlineTimestamp) {
+                    deadlineTimestamp = Date.now() + (deadlineDays * 24 * 60 * 60 * 1000);
+                    localStorage.setItem("plant_" + plantId + "_deadlineTimestamp", deadlineTimestamp);
+                }
+                function resetCountdown() {
                     deadlineTimestamp = Date.now() + (deadlineDays * 24 * 60 * 60 * 1000);
                     localStorage.setItem("plant_" + plantId + "_deadlineTimestamp", deadlineTimestamp);
                 }
@@ -42,9 +47,9 @@
                     var hoursRemaining = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     var minutesRemaining = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
                     var countdownElement = document.getElementById("countdown");
-                    countdownElement.innerHTML = daysRemaining + " days, " + hoursRemaining + " hours, " + minutesRemaining + " minutes remaining";
+                    countdownElement.innerHTML = "Deadline To Give Water: " + daysRemaining + " days, " + hoursRemaining + " hours, " + minutesRemaining + " minutes remaining";
                     if (timeRemaining <= 0) {
-                        countdownElement.innerHTML = "I gave the plant water";
+                        countdownElement.innerHTML = "Give the plant water now!";
                         countdownElement.onclick = function () {
                             deadlineTimestamp = Date.now() + (deadlineDays * 24 * 60 * 60 * 1000);
                             localStorage.setItem("plant_" + plantId + "_deadlineTimestamp", deadlineTimestamp);
@@ -54,13 +59,11 @@
                 }, 1000);
             </script>
             <h1 th:text="${plant.name}">Plant Name</h1>
-            <p th:text="${plant.description}">Plant Description: Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit. Architecto atque cupiditate error est illo iure quas quidem saepe unde, veritatis. Consequatur
-                doloribus est expedita, neque quaerat recusandae ullam vitae.</p>
+            <p th:text="${plant.description}">Plant Description</p>
             <hr>
             <h2>Plant Watering needs</h2>
             <ul>
-                <li><strong>Watering:</strong> <span th:text="${plant.deadlines}">Plant Watering Needs</span></li>
+                <li><strong>Watering interval:</strong> <span th:text="${plant.deadlines}">Plant Watering Needs</span></li>
             </ul>
         </div>
     </div>
